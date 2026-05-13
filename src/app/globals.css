@@ -16,6 +16,13 @@
   --radius-sm: 4px;
   --radius: 8px;
   --radius-lg: 12px;
+
+  /* Tokens de police — référencent les stacks définies dans tokens.css pour générer les utilities Tailwind.
+     --font-display-stack et --font-mono-stack sont déclarées dans tokens.css avec les polices next/font
+     + fallbacks. Ces tokens @theme génèrent les classes Tailwind : font-display, font-mono, font-sans. */
+  --font-display: var(--font-display-stack);
+  --font-mono: var(--font-mono-stack);
+  --font-sans: var(--font-sans);
 }
 
 /* Reset minimal et base dark only. */

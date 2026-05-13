@@ -6,6 +6,9 @@ import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
 
+import { CVButton } from '@/components/layout/CVButton';
+import { Header } from '@/components/layout/Header';
+import { LocaleSwitcher } from '@/components/layout/LocaleSwitcher';
 import { GsapProvider } from '@/components/providers/GsapProvider';
 import { LenisProvider } from '@/components/providers/LenisProvider';
 import { routing } from '@/i18n/routing';
@@ -48,7 +51,17 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <GsapProvider>
             {/* LenisProvider active le smooth scroll global synchronisé avec GSAP. */}
             <LenisProvider>
-              {/* id="main" pour le lien "skip to content" du Header (Task 12). */}
+              {/* Header scroll-aware — actions (CVButton, LocaleSwitcher) passés en prop depuis le server layout.
+                  Composition server/client : CVButton est async server, Header est client. */}
+              <Header
+                actions={
+                  <>
+                    <CVButton />
+                    <LocaleSwitcher />
+                  </>
+                }
+              />
+              {/* id="main" cible du lien "skip to content" dans le Header. */}
               <main id="main">{children}</main>
             </LenisProvider>
           </GsapProvider>
