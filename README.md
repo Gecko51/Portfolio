@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Guillaume Gay
 
-## Getting Started
+Portfolio one-page premium — Next.js 16 + TypeScript strict + Tailwind v4 + Framer Motion + GSAP + Lenis + R3F + next-intl.
 
-First, run the development server:
+> Note: le PRD initial visait Next 15. La stack a été upgradée vers Next 16 (latest stable au moment de l'init), avec Turbopack stable. Aucun impact fonctionnel.
+
+## Stack
+
+Next.js 16 (App Router) · React 19 · TypeScript strict · Tailwind v4 · Framer Motion 12 · GSAP 3 · Lenis · React Three Fiber (Phase 2+) · next-intl 4 · MDX (Phase 4) · Biome · pnpm · Vercel.
+
+## Setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+cp .env.example .env.local
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site démarre sur http://localhost:3000 et redirige vers /fr ou /en selon `accept-language`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Commande | Description |
+|----------|-------------|
+| `pnpm dev` | Dev server (Turbopack) |
+| `pnpm build` | Build production |
+| `pnpm start` | Serve build local |
+| `pnpm lint` | Biome check |
+| `pnpm lint:fix` | Biome check --write |
+| `pnpm format` | Biome format --write |
+| `pnpm typecheck` | tsc --noEmit |
 
-## Learn More
+## Avancement
 
-To learn more about Next.js, take a look at the following resources:
+- [x] **Phase 1 — Foundation** (`v0.1-foundation`) — init Next + i18n + providers + layout placeholder
+- [ ] **Phase 2 — Hero & About** (`v0.2-hero-about`)
+- [ ] **Phase 3 — Experience timeline** (`v0.3-experience`)
+- [ ] **Phase 4 — Projects gallery** (`v0.4-projects`)
+- [ ] **Phase 5 — Contact + Polish + Deploy** (`v1.0-mvp`)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Documentation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `PRD.md` — vision produit et user stories
+- `DEV-RULES.md` — règles de code et de workflow
+- `STRUCTURE.md` — arborescence cible
+- `CLAUDE.md` — guidance pour Claude Code
+- `docs/superpowers/plans/` — plans d'implémentation par phase
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel (prod sur `main`, preview sur `dev` et PRs). DNS Cloudflare.
