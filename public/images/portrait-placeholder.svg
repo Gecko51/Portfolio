@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1f1f1f"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="500" fill="url(#grad)"/>
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
+        font-family="Georgia, serif" font-style="italic" font-size="80" fill="#8a8a8a"
+        opacity="0.4">GG</text>
+  <text x="50%" y="62%" text-anchor="middle" dominant-baseline="middle"
+        font-family="monospace" font-size="11" fill="#8a8a8a"
+        opacity="0.6" letter-spacing="3">PORTRAIT — A VENIR</text>
+</svg>
