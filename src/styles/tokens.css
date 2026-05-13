@@ -19,3 +19,15 @@
   --radius: 8px;
   --radius-lg: 12px;
 }
+
+/* Variables font injectées par next/font dans <html className={...}>. */
+/* GeistSans utilise --font-geist-sans, fontDisplay/fontMono utilisent les noms passés en option. */
+:root {
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-display-stack: var(--font-display), "Instrument Serif", Georgia, serif;
+  --font-mono-stack: var(--font-mono), "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  font-family: var(--font-sans);
+}
