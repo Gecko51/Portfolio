@@ -1,0 +1,21 @@
+/* Design tokens du portfolio — exposés en CSS variables et consommés par Tailwind v4 via @theme. */
+/* Palette : dark premium maximaliste, accent ember discret. Cf. PRD §8 et DEV-RULES §10. */
+:root {
+  /* Surfaces — fond principal très sombre et variante légèrement élevée */
+  --color-bg: #0a0a0a;
+  --color-bg-elevated: #141414;
+  --color-border: #1f1f1f;
+
+  /* Texte — blanc cassé principal et version atténuée pour le contenu secondaire */
+  --color-fg: #f5f5f5;
+  --color-fg-muted: #8a8a8a;
+
+  /* Accents — ember orange vif + version douce pour les hover/secondary states */
+  --color-accent: #ff5b1f;
+  --color-accent-soft: #ffb07a;
+
+  /* Espaces et formes — rayon max 12px, style tech-éditorial (pas friendly-rounded) */
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
