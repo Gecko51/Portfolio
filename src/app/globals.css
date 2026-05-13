@@ -41,3 +41,26 @@ body {
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
+
+/* Animation marquee — défilement horizontal infini pour StackMarquee. */
+/* Utilise transform translateX pour rester GPU-accelerated, pas de jank scroll. */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-left 30s linear infinite;
+  will-change: transform;
+}
+
+/* Respect prefers-reduced-motion : freeze l'animation. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
