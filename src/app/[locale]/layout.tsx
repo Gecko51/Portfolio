@@ -1,6 +1,6 @@
-// Layout localisé — possède <html lang> et <body>.
-// Pattern A next-intl : ce layout est propriétaire de la structure HTML complète.
-// Providers GSAP et Lenis montés ici (Tasks 10-11). Header/Footer en Tasks 12-13.
+// Layout localisé — pattern B : ne rend PAS <html>/<body> (le root layout les possède).
+// Rôle : validation de la locale, setRequestLocale pour SSG, providers, Header, main, Footer.
+// La langue côté client est synchronisée via <LocaleLangSync /> (DOM direct sur document.documentElement).
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -13,8 +13,8 @@ import { LocaleSwitcher } from '@/components/layout/LocaleSwitcher';
 import { CursorProvider } from '@/components/providers/CursorProvider';
 import { GsapProvider } from '@/components/providers/GsapProvider';
 import { LenisProvider } from '@/components/providers/LenisProvider';
+import { LocaleLangSync } from '@/components/providers/LocaleLangSync';
 import { routing } from '@/i18n/routing';
-import { fontBody, fontDisplay, fontMono } from '@/styles/fonts';
 
 // Pré-génère les routes statiques pour chaque locale supportée (DEV-RULES §1 : RSC par défaut).
 export function generateStaticParams() {
@@ -40,40 +40,33 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   setRequestLocale(locale);
 
   return (
-    // lang= positionné dynamiquement selon la locale active.
-    // Les variables CSS de polices sont injectées via les classes .variable de next/font.
-    <html
-      lang={locale}
-      className={`${fontBody.variable} ${fontDisplay.variable} ${fontMono.variable}`}
-    >
-      <body>
-        {/* NextIntlClientProvider rend les traductions disponibles côté Client Components. */}
-        <NextIntlClientProvider>
-          {/* GsapProvider enregistre ScrollTrigger une seule fois au montage. */}
-          <GsapProvider>
-            {/* LenisProvider active le smooth scroll global synchronisé avec GSAP. */}
-            <LenisProvider>
-              {/* CursorProvider — monte le curseur custom uniquement sur desktop avec souris,
-                  si l'utilisateur n'a pas activé prefers-reduced-motion. */}
-              <CursorProvider>
-                {/* Header scroll-aware — actions (CVButton, LocaleSwitcher) passés en prop depuis le server layout.
-                    Composition server/client : CVButton est async server, Header est client. */}
-                <Header
-                  actions={
-                    <>
-                      <CVButton />
-                      <LocaleSwitcher />
-                    </>
-                  }
-                />
-                {/* id="main" cible du lien "skip to content" dans le Header. */}
-                <main id="main">{children}</main>
-                <Footer />
-              </CursorProvider>
-            </LenisProvider>
-          </GsapProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    // NextIntlClientProvider rend les traductions disponibles côté Client Components.
+    <NextIntlClientProvider>
+      {/* LocaleLangSync ajuste <html lang> côté client après hydratation pour matcher la locale réelle. */}
+      <LocaleLangSync locale={locale} />
+      {/* GsapProvider enregistre ScrollTrigger une seule fois au montage. */}
+      <GsapProvider>
+        {/* LenisProvider active le smooth scroll global synchronisé avec GSAP. */}
+        <LenisProvider>
+          {/* CursorProvider — monte le curseur custom uniquement sur desktop avec souris,
+              si l'utilisateur n'a pas activé prefers-reduced-motion. */}
+          <CursorProvider>
+            {/* Header scroll-aware — actions (CVButton, LocaleSwitcher) passés en prop depuis le server layout.
+                Composition server/client : CVButton est async server, Header est client. */}
+            <Header
+              actions={
+                <>
+                  <CVButton />
+                  <LocaleSwitcher />
+                </>
+              }
+            />
+            {/* id="main" cible du lien "skip to content" dans le Header. */}
+            <main id="main">{children}</main>
+            <Footer />
+          </CursorProvider>
+        </LenisProvider>
+      </GsapProvider>
+    </NextIntlClientProvider>
   );
 }

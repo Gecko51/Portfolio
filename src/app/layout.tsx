@@ -1,9 +1,11 @@
-// Root layout — Next.js exige un root layout à la racine de app/.
-// Pattern A (next-intl recommandé) : ce layout est un passthrough pur.
-// C'est le [locale]/layout.tsx qui possède <html> et <body> pour gérer lang= dynamiquement.
-// Note : Next.js peut émettre un avertissement sur l'absence de <html>/<body> ici — c'est attendu.
+// Root layout — Next 16 exige que <html> et <body> vivent ici (pattern B).
+// La langue dynamique selon la locale active est synchronisée côté client via LocaleLangSync
+// (monté dans [locale]/layout.tsx). Le SSR initial utilise routing.defaultLocale.
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+
+import { routing } from '@/i18n/routing';
+import { fontBody, fontDisplay, fontMono } from '@/styles/fonts';
 
 import './globals.css';
 
@@ -15,7 +17,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
 };
 
-// Passthrough : on délègue tout le rendu au layout localisé [locale]/layout.tsx.
+// Root layout : possède <html> et <body>, applique les variables CSS des polices via className.
+// Le lang affiché en SSR est la locale par défaut ; LocaleLangSync (côté client) ajuste à la locale réelle.
 export default function RootLayout({ children }: { children: ReactNode }) {
-  return children;
+  return (
+    <html
+      lang={routing.defaultLocale}
+      className={`${fontBody.variable} ${fontDisplay.variable} ${fontMono.variable}`}
+    >
+      <body>{children}</body>
+    </html>
+  );
 }
