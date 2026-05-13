@@ -5,6 +5,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 // Import du composant About — section avec texte éditorial, portrait et marquee de stack.
 import { About } from '@/components/sections/About/About';
+// Import du composant Experience — section timeline avec items main + compact militaire.
+import { Experience } from '@/components/sections/Experience/Experience';
 // Import du composant Hero — section plein écran avec fond animé, nom et tagline.
 import { Hero } from '@/components/sections/Hero/Hero';
 
@@ -31,10 +33,8 @@ export default async function Home({ params }: HomeProps) {
       {/* Section About — texte éditorial + portrait + marquee de stack technique */}
       <About />
 
-      {/* Section Experience — ancre #experience pour la navigation */}
-      <section id="experience" className="min-h-screen flex items-center justify-center">
-        <p className="text-fg-muted">{t('placeholderExperience')}</p>
-      </section>
+      {/* Section Experience — timeline avec Gecko Mind, Reconversion, Armée de Terre */}
+      <Experience />
 
       {/* Section Projects — ancre #projects pour la navigation */}
       <section id="projects" className="min-h-screen flex items-center justify-center">
