@@ -38,5 +38,26 @@
     "itemsAI": "Claude Code · Claude Cowork · MCP · Anthropic API · Prompt Engineering",
     "itemsWeb": "Next.js · TypeScript · React · Tailwind · Supabase · shadcn/ui",
     "itemsAutomation": "n8n · Airtable · Chrome Extensions · LinkedIn Helper · Python"
+  },
+  "Experience": {
+    "kicker": "Parcours",
+    "title": "De l'artillerie à l'IA",
+    "geckoMindPeriod": "Juin 2024 – Aujourd'hui",
+    "geckoMindRole": "Founder & AI Builder",
+    "geckoMindOrg": "Gecko Mind",
+    "geckoMindDescription": "Service done-for-you de prospection LinkedIn B2B et création de contenu pour solopreneurs, freelances et dirigeants TPE/PME. Direction technique, marketing, sales et opérations en autonomie complète.",
+    "reconversionPeriod": "2024",
+    "reconversionRole": "Reconversion tech",
+    "reconversionOrg": "Formations & build",
+    "reconversionDescription": "Formations en ligne intensives (développement web, IA, automatisation, growth hacking). Lancement du projet open source Gecko Agent. Mise en place de la stack Gecko Mind et premiers clients.",
+    "armyPeriod": "2003 – 2024 · 21 ans",
+    "armyRole": "Sous-officier",
+    "armyOrg": "Armée de Terre française",
+    "armyDescription": "Carrière complète, principalement dans l'artillerie. 7 postes successifs en responsabilité croissante (administration RH, opérateur radar et radio, pilote d'engins blindés, chef d'équipe observation avancée, sous-officier matériels).",
+    "softSkillsKicker": "Compétences transférables",
+    "softSkillManagement": "Management d'équipe jusqu'à 30 personnes",
+    "softSkillFormation": "Conception et animation de formations",
+    "softSkillPilotage": "Pilotage de projets sous contrainte forte",
+    "softSkillDecision": "Prise de décision en environnement complexe"
   }
 }

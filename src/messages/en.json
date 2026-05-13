@@ -38,5 +38,26 @@
     "itemsAI": "Claude Code · Claude Cowork · MCP · Anthropic API · Prompt Engineering",
     "itemsWeb": "Next.js · TypeScript · React · Tailwind · Supabase · shadcn/ui",
     "itemsAutomation": "n8n · Airtable · Chrome Extensions · LinkedIn Helper · Python"
+  },
+  "Experience": {
+    "kicker": "Experience",
+    "title": "From artillery to AI",
+    "geckoMindPeriod": "Jun 2024 – Present",
+    "geckoMindRole": "Founder & AI Builder",
+    "geckoMindOrg": "Gecko Mind",
+    "geckoMindDescription": "Done-for-you LinkedIn B2B prospecting and content creation service for solopreneurs, freelancers and B2B SME leaders. End-to-end ownership of tech, marketing, sales and operations.",
+    "reconversionPeriod": "2024",
+    "reconversionRole": "Tech transition",
+    "reconversionOrg": "Training & building",
+    "reconversionDescription": "Intensive online training (web development, AI, automation, growth hacking). Launched the Gecko Agent open source project. Built the Gecko Mind stack and onboarded first clients.",
+    "armyPeriod": "2003 – 2024 · 21 years",
+    "armyRole": "Senior NCO",
+    "armyOrg": "French Army",
+    "armyDescription": "Full career, primarily in artillery. 7 successive positions with increasing responsibility (HR administration, radar/radio operator, armored vehicle driver, advanced observation team deputy, NCO in charge of unit equipment).",
+    "softSkillsKicker": "Transferable skills",
+    "softSkillManagement": "Managing teams of up to 30 people",
+    "softSkillFormation": "Training design and delivery",
+    "softSkillPilotage": "Project management under high pressure",
+    "softSkillDecision": "Decision-making in complex environments"
   }
 }
