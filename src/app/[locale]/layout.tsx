@@ -1,11 +1,13 @@
 // Layout localisé — possède <html lang> et <body>.
 // Pattern A next-intl : ce layout est propriétaire de la structure HTML complète.
-// Les providers Lenis/GSAP arrivent en Tasks 10-11. Header/Footer en Tasks 12-13.
+// Providers GSAP et Lenis montés ici (Tasks 10-11). Header/Footer en Tasks 12-13.
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
 
+import { GsapProvider } from '@/components/providers/GsapProvider';
+import { LenisProvider } from '@/components/providers/LenisProvider';
 import { routing } from '@/i18n/routing';
 import { fontBody, fontDisplay, fontMono } from '@/styles/fonts';
 
@@ -42,8 +44,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <body>
         {/* NextIntlClientProvider rend les traductions disponibles côté Client Components. */}
         <NextIntlClientProvider>
-          {/* id="main" pour le lien "skip to content" du Header (Task 12). */}
-          <main id="main">{children}</main>
+          {/* GsapProvider enregistre ScrollTrigger une seule fois au montage. */}
+          <GsapProvider>
+            {/* LenisProvider active le smooth scroll global synchronisé avec GSAP. */}
+            <LenisProvider>
+              {/* id="main" pour le lien "skip to content" du Header (Task 12). */}
+              <main id="main">{children}</main>
+            </LenisProvider>
+          </GsapProvider>
         </NextIntlClientProvider>
       </body>
     </html>
