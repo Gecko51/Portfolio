@@ -1,0 +1,38 @@
+---
+slug: gecko-agent
+title: Gecko Agent
+tagline: Open source Chrome extension automating LinkedIn and web workflows
+year: 2024
+role: Solo developer
+stack:
+  - TypeScript
+  - Chrome Extension API
+  - Anthropic API
+  - Computer Use
+cover: /projects/gecko-agent/cover.svg
+gallery: []
+links:
+  github: https://github.com/Gecko51
+order: 2
+featured: true
+---
+
+## Why
+
+LinkedIn tools on the market are closed, volume-priced, and store client data on the vendor side. I needed an automation brick that runs in MY browser, on MY LinkedIn sessions, without external server transit. Gecko Agent was born from this operational need at Gecko Mind, then open-sourced.
+
+## What it does
+
+Chrome extension that drives LinkedIn and web actions from a custom panel: profile extraction, templated message sending, feed scraping, optional Claude integration for complex decisions (profile qualification, contextual reply generation).
+
+## Tech stack
+
+- Manifest V3 Chrome Extension
+- TypeScript strict, build via Vite
+- Anthropic API (function calling) for AI-assisted decisions
+- No backend: everything local, data in `chrome.storage`
+- Compatible with Computer Use for more complex scenarios
+
+## Why open source
+
+The AI + automation ecosystem lacks concrete, maintainable examples. Gecko Agent aims to serve as a reference on these patterns.

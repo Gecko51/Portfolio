@@ -1,0 +1,45 @@
+---
+slug: skill-ecosystem
+title: Gecko Mind Skill Ecosystem
+tagline: Bibliothèque privée de 25+ skills Claude pour automatiser les opérations B2B
+year: 2024
+role: Architect & Operator
+stack:
+  - Claude Cowork
+  - Claude Code
+  - MCP
+  - Anthropic API
+  - Markdown
+cover: /projects/skill-ecosystem/cover.svg
+gallery: []
+links: {}
+order: 3
+featured: true
+---
+
+## Le contexte
+
+Opérer Gecko Mind à l'échelle imposait de standardiser les tâches récurrentes : génération de contenu LinkedIn, scoring de prospects, qualification conversationnelle, traitement email, facturation. Chaque tâche avait son prompt, ses inputs, ses outputs — sans architecture, c'est l'enfer à maintenir.
+
+## L'architecture
+
+Inspirée de l'approche Claude Cowork, chaque skill suit la même structure :
+
+- `SKILL.md` — définition du rôle, des inputs/outputs, des règles métier
+- `references/` — exemples, prompts longs, données de référence
+- `examples/` — sorties attendues sur cas types
+
+Cette structure est compatible Claude Code (skills custom invocables en CLI) et Claude Cowork (skills web disponibles dans les conversations client).
+
+## L'inventaire
+
+25+ skills aujourd'hui en production, couvrant :
+
+- **Prospection** : scoring, qualification, prospection conversationnelle, gestion de cadence
+- **Contenu** : génération posts LinkedIn, voix client, formats variés (carousels, texte long)
+- **Ops** : traitement email, facturation, reporting, gestion calendrier
+- **Méta** : skills d'orchestration qui composent les autres
+
+## Ce que ça change
+
+Chaque nouveau client a un onboarding standardisé : on instancie les skills, on personnalise la voix, on push en prod. La marge opérationnelle est devenue gérable solo.
