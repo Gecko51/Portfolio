@@ -15,10 +15,28 @@
     "version": "build {hash}"
   },
   "Home": {
-    "placeholderHero": "Hero — coming Phase 2",
-    "placeholderAbout": "About — coming Phase 2",
     "placeholderExperience": "Experience — coming Phase 3",
     "placeholderProjects": "Projects — coming Phase 4",
     "placeholderContact": "Contact — coming Phase 5"
+  },
+  "Hero": {
+    "name": "Guillaume Gay",
+    "tagline": "AI Builder & Full Stack Developer",
+    "scrollHint": "scroll"
+  },
+  "About": {
+    "kicker": "About",
+    "paragraph1": "Tech solopreneur, AI Builder. After 21 years in the French Army, I transitioned in 2024 to AI-assisted programming and B2B automation.",
+    "paragraph2": "I design and operate Gecko Mind — a done-for-you LinkedIn prospecting and content creation service for solopreneurs, freelancers and B2B SME decision-makers.",
+    "paragraph3": "Inhouse stack: Claude ecosystem (Code, Cowork, MCP, API), n8n, Airtable, custom Chrome extensions. Pragmatic, ship-fast, modular architecture.",
+    "portraitAlt": "Portrait of Guillaume Gay"
+  },
+  "Stack": {
+    "categoryAI": "AI / Claude",
+    "categoryWeb": "Web",
+    "categoryAutomation": "Automation",
+    "itemsAI": "Claude Code · Claude Cowork · MCP · Anthropic API · Prompt Engineering",
+    "itemsWeb": "Next.js · TypeScript · React · Tailwind · Supabase · shadcn/ui",
+    "itemsAutomation": "n8n · Airtable · Chrome Extensions · LinkedIn Helper · Python"
   }
 }

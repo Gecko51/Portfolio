@@ -20,16 +20,6 @@ export default async function Home({ params }: HomeProps) {
 
   return (
     <>
-      {/* Section Hero — ancre #hero pour la navigation */}
-      <section id="hero" className="min-h-screen flex items-center justify-center">
-        <p className="text-fg-muted">{t('placeholderHero')}</p>
-      </section>
-
-      {/* Section About — ancre #about pour la navigation */}
-      <section id="about" className="min-h-screen flex items-center justify-center">
-        <p className="text-fg-muted">{t('placeholderAbout')}</p>
-      </section>
-
       {/* Section Experience — ancre #experience pour la navigation */}
       <section id="experience" className="min-h-screen flex items-center justify-center">
         <p className="text-fg-muted">{t('placeholderExperience')}</p>
