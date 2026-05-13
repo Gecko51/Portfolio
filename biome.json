@@ -29,6 +29,9 @@
         "noNonNullAssertion": "error",
         "useImportType": "error"
       },
+      "complexity": {
+        "noUselessEmptyExport": "off"
+      },
       "correctness": {
         "noUnusedImports": "error",
         "noUnusedVariables": "error"

@@ -1,1 +1,24 @@
-{}
+{
+  "Nav": {
+    "skipToContent": "Skip to content",
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact",
+    "downloadCv": "Download CV",
+    "switchToEnglish": "Français"
+  },
+  "Footer": {
+    "credit": "© Guillaume Gay 2026",
+    "builtWith": "Built with Claude Code",
+    "version": "build {hash}"
+  },
+  "Home": {
+    "placeholderHero": "Hero — coming Phase 2",
+    "placeholderAbout": "About — coming Phase 2",
+    "placeholderExperience": "Experience — coming Phase 3",
+    "placeholderProjects": "Projects — coming Phase 4",
+    "placeholderContact": "Contact — coming Phase 5"
+  }
+}

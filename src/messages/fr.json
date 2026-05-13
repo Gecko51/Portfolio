@@ -1,1 +1,24 @@
-{}
+{
+  "Nav": {
+    "skipToContent": "Aller au contenu",
+    "home": "Accueil",
+    "about": "À propos",
+    "experience": "Parcours",
+    "projects": "Projets",
+    "contact": "Contact",
+    "downloadCv": "Télécharger le CV",
+    "switchToEnglish": "English"
+  },
+  "Footer": {
+    "credit": "© Guillaume Gay 2026",
+    "builtWith": "Built with Claude Code",
+    "version": "build {hash}"
+  },
+  "Home": {
+    "placeholderHero": "Hero — à venir Phase 2",
+    "placeholderAbout": "About — à venir Phase 2",
+    "placeholderExperience": "Experience — à venir Phase 3",
+    "placeholderProjects": "Projects — à venir Phase 4",
+    "placeholderContact": "Contact — à venir Phase 5"
+  }
+}
