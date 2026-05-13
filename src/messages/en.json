@@ -58,5 +58,17 @@
     "softSkillFormation": "Training design and delivery",
     "softSkillPilotage": "Project management under high pressure",
     "softSkillDecision": "Decision-making in complex environments"
+  },
+  "Projects": {
+    "kicker": "Projects",
+    "title": "What I build",
+    "viewProject": "View project",
+    "backToGallery": "← Back to gallery",
+    "viewGithub": "View on GitHub",
+    "viewLive": "View live",
+    "scrollHint": "Scroll horizontally",
+    "yearLabel": "Year",
+    "roleLabel": "Role",
+    "stackLabel": "Stack"
   }
 }

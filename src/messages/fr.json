@@ -58,5 +58,17 @@
     "softSkillFormation": "Conception et animation de formations",
     "softSkillPilotage": "Pilotage de projets sous contrainte forte",
     "softSkillDecision": "Prise de décision en environnement complexe"
+  },
+  "Projects": {
+    "kicker": "Projets",
+    "title": "Ce que je construis",
+    "viewProject": "Voir le projet",
+    "backToGallery": "← Retour à la galerie",
+    "viewGithub": "Voir sur GitHub",
+    "viewLive": "Voir le site",
+    "scrollHint": "Faites défiler horizontalement",
+    "yearLabel": "Année",
+    "roleLabel": "Rôle",
+    "stackLabel": "Stack"
   }
 }
