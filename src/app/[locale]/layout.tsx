@@ -10,6 +10,7 @@ import { CVButton } from '@/components/layout/CVButton';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { LocaleSwitcher } from '@/components/layout/LocaleSwitcher';
+import { CursorProvider } from '@/components/providers/CursorProvider';
 import { GsapProvider } from '@/components/providers/GsapProvider';
 import { LenisProvider } from '@/components/providers/LenisProvider';
 import { routing } from '@/i18n/routing';
@@ -52,19 +53,23 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <GsapProvider>
             {/* LenisProvider active le smooth scroll global synchronisé avec GSAP. */}
             <LenisProvider>
-              {/* Header scroll-aware — actions (CVButton, LocaleSwitcher) passés en prop depuis le server layout.
-                  Composition server/client : CVButton est async server, Header est client. */}
-              <Header
-                actions={
-                  <>
-                    <CVButton />
-                    <LocaleSwitcher />
-                  </>
-                }
-              />
-              {/* id="main" cible du lien "skip to content" dans le Header. */}
-              <main id="main">{children}</main>
-              <Footer />
+              {/* CursorProvider — monte le curseur custom uniquement sur desktop avec souris,
+                  si l'utilisateur n'a pas activé prefers-reduced-motion. */}
+              <CursorProvider>
+                {/* Header scroll-aware — actions (CVButton, LocaleSwitcher) passés en prop depuis le server layout.
+                    Composition server/client : CVButton est async server, Header est client. */}
+                <Header
+                  actions={
+                    <>
+                      <CVButton />
+                      <LocaleSwitcher />
+                    </>
+                  }
+                />
+                {/* id="main" cible du lien "skip to content" dans le Header. */}
+                <main id="main">{children}</main>
+                <Footer />
+              </CursorProvider>
             </LenisProvider>
           </GsapProvider>
         </NextIntlClientProvider>
