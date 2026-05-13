@@ -29,7 +29,8 @@
     "remark-gfm": "^4.0.1",
     "split-type": "^0.3.4",
     "tailwind-merge": "^3.6.0",
-    "three": "^0.180.0"
+    "three": "^0.180.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
