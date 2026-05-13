@@ -3,6 +3,8 @@
 // RSC pur (DEV-RULES §1) — pas de 'use client'. Traductions via getTranslations (DEV-RULES §10).
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
+// Import du composant About — section avec texte éditorial, portrait et marquee de stack.
+import { About } from '@/components/sections/About/About';
 // Import du composant Hero — section plein écran avec fond animé, nom et tagline.
 import { Hero } from '@/components/sections/Hero/Hero';
 
@@ -25,6 +27,9 @@ export default async function Home({ params }: HomeProps) {
     <>
       {/* Section Hero — plein écran avec fond animé, nom et tagline */}
       <Hero />
+
+      {/* Section About — texte éditorial + portrait + marquee de stack technique */}
+      <About />
 
       {/* Section Experience — ancre #experience pour la navigation */}
       <section id="experience" className="min-h-screen flex items-center justify-center">
