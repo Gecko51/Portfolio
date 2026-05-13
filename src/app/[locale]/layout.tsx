@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
 
 import { CVButton } from '@/components/layout/CVButton';
+import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { LocaleSwitcher } from '@/components/layout/LocaleSwitcher';
 import { GsapProvider } from '@/components/providers/GsapProvider';
@@ -63,6 +64,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               />
               {/* id="main" cible du lien "skip to content" dans le Header. */}
               <main id="main">{children}</main>
+              <Footer />
             </LenisProvider>
           </GsapProvider>
         </NextIntlClientProvider>
