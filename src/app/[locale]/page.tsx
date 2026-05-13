@@ -9,6 +9,8 @@ import { About } from '@/components/sections/About/About';
 import { Experience } from '@/components/sections/Experience/Experience';
 // Import du composant Hero — section plein écran avec fond animé, nom et tagline.
 import { Hero } from '@/components/sections/Hero/Hero';
+// Import du composant Projects — galerie de projets avec scroll horizontal animé.
+import { Projects } from '@/components/sections/Projects/Projects';
 
 // Props : params est une Promise (Next 15+ App Router).
 type HomeProps = {
@@ -36,10 +38,8 @@ export default async function Home({ params }: HomeProps) {
       {/* Section Experience — timeline avec Gecko Mind, Reconversion, Armée de Terre */}
       <Experience />
 
-      {/* Section Projects — ancre #projects pour la navigation */}
-      <section id="projects" className="min-h-screen flex items-center justify-center">
-        <p className="text-fg-muted">{t('placeholderProjects')}</p>
-      </section>
+      {/* Section Projects — galerie de projets avec scroll horizontal animé (GSAP desktop, snap mobile) */}
+      <Projects />
 
       {/* Section Contact — ancre #contact pour la navigation */}
       <section id="contact" className="min-h-screen flex items-center justify-center">
