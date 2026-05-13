@@ -1,12 +1,16 @@
 // ProjectNav — barre de navigation en haut de la page détail projet.
 // Back link vers la galerie home (#projects anchor pour scroll restore approximatif).
-// Server component avec traductions.
+// Server component avec traductions — locale passée explicitement pour éviter les fuites de contexte next-intl.
 import { getTranslations } from 'next-intl/server';
 
 import { Link } from '@/i18n/navigation';
 
-export async function ProjectNav() {
-  const t = await getTranslations('Projects');
+type ProjectNavProps = {
+  locale: string;
+};
+
+export async function ProjectNav({ locale }: ProjectNavProps) {
+  const t = await getTranslations({ locale, namespace: 'Projects' });
 
   return (
     <nav className="mx-auto max-w-5xl px-6 md:px-12 pt-32 pb-4">

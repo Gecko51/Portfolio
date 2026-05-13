@@ -1,5 +1,6 @@
 // ProjectHero — hero de la page détail projet.
 // Affiche : cover background, kicker (year + role), titre XL, tagline, stack tags.
+// locale passé explicitement pour éviter les fuites de contexte next-intl en dev (Turbopack).
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 
@@ -8,10 +9,11 @@ import type { Project } from '@/types/project';
 
 type ProjectHeroProps = {
   project: Project;
+  locale: string;
 };
 
-export async function ProjectHero({ project }: ProjectHeroProps) {
-  const t = await getTranslations('Projects');
+export async function ProjectHero({ project, locale }: ProjectHeroProps) {
+  const t = await getTranslations({ locale, namespace: 'Projects' });
 
   return (
     <header className="relative">

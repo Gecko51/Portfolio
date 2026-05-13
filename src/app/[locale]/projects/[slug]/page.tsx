@@ -56,8 +56,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <article className="relative">
-      <ProjectNav />
-      <ProjectHero project={project} />
+      <ProjectNav locale={locale} />
+      <ProjectHero project={project} locale={locale} />
       <ProjectContent>{project.content}</ProjectContent>
       {project.gallery.length > 0 && (
         <ProjectGallery images={project.gallery} alt={project.title} />
