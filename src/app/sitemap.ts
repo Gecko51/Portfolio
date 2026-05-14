@@ -29,7 +29,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Entrées projets — slugs lus depuis les MDX de chaque locale.
-  // On suppose que les slugs FR et EN sont identiques (cf. content/projects/).
+  // IMPORTANT: les slugs MDX doivent être strictement identiques entre src/content/projects/fr/ et /en/.
+  // Si un projet existe dans une seule locale, l'URL pour l'autre locale aboutira à 404.
+  // Pour MVP : on assume la parité. À muscler si divergence : faire une union des deux locales.
   const slugs = await getProjectSlugs(routing.defaultLocale);
   const projectEntries: MetadataRoute.Sitemap = slugs.flatMap((slug) =>
     routing.locales.map((locale) => ({

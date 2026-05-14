@@ -1,6 +1,7 @@
 // Composant SEO — injecte un schema.org Person en JSON-LD.
 // Render via <script type="application/ld+json"> côté server, pas de dangerous interaction.
 // Schéma : https://schema.org/Person
+import { routing } from '@/i18n/routing';
 import { SITE_URL } from '@/lib/seo';
 
 type JsonLdPersonProps = {
@@ -15,7 +16,9 @@ export function JsonLdPerson({ locale }: JsonLdPersonProps) {
     '@type': 'Person',
     name: 'Guillaume Gay',
     alternateName: 'Gecko51',
-    url: `${SITE_URL}/${locale}`,
+    // URL canonique de la personne — pointe toujours vers la locale par défaut
+    // pour garantir une URL stable dans le Knowledge Graph Google (évite 2 entités).
+    url: `${SITE_URL}/${routing.defaultLocale}`,
     image: `${SITE_URL}/images/portrait-placeholder.svg`,
     jobTitle: 'AI Builder & Full Stack Developer',
     description:

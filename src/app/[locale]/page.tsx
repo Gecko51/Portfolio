@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: HomeProps): Promise<Metadata>
   return {
     title,
     description,
-    alternates: buildAlternates(''),
+    alternates: buildAlternates('', typedLocale),
     openGraph: {
       title,
       description,

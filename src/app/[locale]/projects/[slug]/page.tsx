@@ -54,11 +54,13 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   return {
     title: `${project.title} — Guillaume Gay`,
     description: project.tagline,
-    alternates: buildAlternates(canonicalPath),
+    alternates: buildAlternates(canonicalPath, typedLocale),
     openGraph: {
       title: project.title,
       description: project.tagline,
       url: `${SITE_URL}/${typedLocale}${canonicalPath}`,
+      // Locale OG au format IETF (ex: fr_FR, en_US) — requis pour Facebook/LinkedIn parser.
+      locale: typedLocale === 'fr' ? 'fr_FR' : 'en_US',
       type: 'article',
       images: [{ url: ogUrl, width: 1200, height: 630 }],
     },

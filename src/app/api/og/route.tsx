@@ -21,10 +21,9 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get('title') ?? 'Guillaume Gay';
   const subtitle = searchParams.get('subtitle') ?? 'AI Builder & Full Stack Developer';
-  const locale = searchParams.get('locale') ?? 'fr';
 
-  // Pied de page localisé.
-  const footer = locale === 'fr' ? 'Portfolio · 2026' : 'Portfolio · 2026';
+  // Pied de page fixe — identique pour toutes les locales (pas de traduction nécessaire).
+  const footer = 'Portfolio · 2026';
 
   try {
     // L'API ImageResponse rend du JSX en image PNG via Satori.
