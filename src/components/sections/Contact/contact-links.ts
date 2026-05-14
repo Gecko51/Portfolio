@@ -1,5 +1,6 @@
 // Source de vérité unique pour les liens contact.
 // Centralisé ici pour éviter les divergences entre Contact, Footer et JSON-LD SEO.
+// displayValue : valeur d'affichage non-localisable (email, handle, domaine) — inutile de la dupliquer dans les fichiers de messages.
 export type ContactLink = {
   // Clé d'identification stable (utilisée pour le tracking analytics).
   id: 'email' | 'linkedin' | 'github' | 'gecko-mind';
@@ -7,15 +8,33 @@ export type ContactLink = {
   href: string;
   // Préfixe pour Plausible event (ex: 'click_contact_email').
   trackEvent: string;
+  // Valeur affichée dans le CTA — non-localisable (même en FR et EN).
+  displayValue: string;
 };
 
 export const CONTACT_LINKS: readonly ContactLink[] = [
-  { id: 'email', href: 'mailto:gay.guillaume@orange.fr', trackEvent: 'click_contact_email' },
+  {
+    id: 'email',
+    href: 'mailto:gay.guillaume@orange.fr',
+    trackEvent: 'click_contact_email',
+    displayValue: 'gay.guillaume@orange.fr',
+  },
   {
     id: 'linkedin',
     href: 'https://www.linkedin.com/in/gay-guillaume/',
     trackEvent: 'click_contact_linkedin',
+    displayValue: '@gay-guillaume',
   },
-  { id: 'github', href: 'https://github.com/Gecko51', trackEvent: 'click_contact_github' },
-  { id: 'gecko-mind', href: 'https://geckomind.fr', trackEvent: 'click_contact_geckomind' },
+  {
+    id: 'github',
+    href: 'https://github.com/Gecko51',
+    trackEvent: 'click_contact_github',
+    displayValue: '@Gecko51',
+  },
+  {
+    id: 'gecko-mind',
+    href: 'https://geckomind.fr',
+    trackEvent: 'click_contact_geckomind',
+    displayValue: 'geckomind.fr',
+  },
 ] as const;

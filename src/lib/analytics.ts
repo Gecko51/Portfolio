@@ -1,5 +1,5 @@
 // Helper analytics — wrapper typé autour de window.plausible (cookieless).
-// No-op gracieux si Plausible n'est pas chargé (dev local, prefers-reduced-motion d'analytics, etc).
+// No-op gracieux si Plausible n'est pas chargé : dev local (env var manquante), script bloqué par adblock, ou chargement asynchrone pas encore terminé.
 // Ref: https://plausible.io/docs/custom-event-goals
 
 // Type minimal de l'API window.plausible exposée par le script Plausible.

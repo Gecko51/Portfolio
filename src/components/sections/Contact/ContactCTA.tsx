@@ -101,7 +101,13 @@ export function ContactCTA({
         </span>
       </span>
       {icon ? (
-        <span className="text-fg-muted transition-transform group-hover:translate-x-1">{icon}</span>
+        // aria-hidden masque l'icône aux screen readers — l'aria-label du <a> couvre déjà l'intention.
+        <span
+          aria-hidden="true"
+          className="text-fg-muted transition-transform group-hover:translate-x-1"
+        >
+          {icon}
+        </span>
       ) : null}
     </a>
   );
