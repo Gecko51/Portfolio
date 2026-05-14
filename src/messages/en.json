@@ -14,8 +14,22 @@
     "builtWith": "Built with Claude Code",
     "version": "build {hash}"
   },
-  "Home": {
-    "placeholderContact": "Contact — coming Phase 5"
+  "Contact": {
+    "kicker": "Contact",
+    "title": "Let's talk.",
+    "intro": "Whether you're a solopreneur, freelancer or B2B SME founder, let's discuss your acquisition and automation.",
+    "emailLabel": "Email",
+    "emailValue": "gay.guillaume@orange.fr",
+    "linkedinLabel": "LinkedIn",
+    "linkedinValue": "@gay-guillaume",
+    "githubLabel": "GitHub",
+    "githubValue": "@Gecko51",
+    "geckoMindLabel": "Gecko Mind",
+    "geckoMindValue": "geckomind.fr",
+    "ariaEmail": "Send email to Guillaume Gay",
+    "ariaLinkedin": "Guillaume Gay's LinkedIn profile",
+    "ariaGithub": "Guillaume Gay's GitHub profile",
+    "ariaGeckoMind": "Gecko Mind website"
   },
   "Hero": {
     "name": "Guillaume Gay",
