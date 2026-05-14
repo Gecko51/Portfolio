@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from 'next-intl';
 // DEV-RULES §10 : toujours importer depuis @/i18n/navigation, jamais depuis next/navigation.
 import { usePathname, useRouter } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
+import { track } from '@/lib/analytics';
 
 export function LocaleSwitcher() {
   const locale = useLocale() as Locale;
@@ -18,6 +19,8 @@ export function LocaleSwitcher() {
   const targetLocale: Locale = locale === 'fr' ? 'en' : 'fr';
 
   const handleSwitch = () => {
+    // Track le switch avant la navigation — Plausible sendBeacon est non-bloquant.
+    track('locale_switch', { from: locale, to: targetLocale });
     // router.replace pour ne pas ajouter d'entrée dans l'historique de navigation.
     // DEV-RULES §10 : router localisé via @/i18n/navigation.
     router.replace(pathname, { locale: targetLocale });
