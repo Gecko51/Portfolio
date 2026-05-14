@@ -6,6 +6,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
 
+import { Plausible } from '@/components/analytics/Plausible';
 import { CVButton } from '@/components/layout/CVButton';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
@@ -67,6 +68,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           </CursorProvider>
         </LenisProvider>
       </GsapProvider>
+      {/* Plausible monté hors des providers d'animation pour éviter toute interaction.
+          No-op si NEXT_PUBLIC_PLAUSIBLE_DOMAIN n'est pas défini (dev local). */}
+      <Plausible />
     </NextIntlClientProvider>
   );
 }
