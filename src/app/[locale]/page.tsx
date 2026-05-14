@@ -10,8 +10,8 @@ import { Experience } from '@/components/sections/Experience/Experience';
 import { Hero } from '@/components/sections/Hero/Hero';
 import { Projects } from '@/components/sections/Projects/Projects';
 import { JsonLdPerson } from '@/components/seo/JsonLdPerson';
-import { type Locale } from '@/i18n/routing';
-import { buildAlternates, buildOgUrl, SITE_URL } from '@/lib/seo';
+import type { Locale } from '@/i18n/routing';
+import { SITE_URL, buildAlternates, buildOgUrl } from '@/lib/seo';
 
 // Props : params est une Promise (Next 15+ App Router).
 type HomeProps = {

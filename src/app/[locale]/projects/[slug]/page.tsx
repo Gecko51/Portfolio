@@ -10,7 +10,7 @@ import { ProjectHero } from '@/components/sections/Projects/ProjectDetail/Projec
 import { ProjectNav } from '@/components/sections/Projects/ProjectDetail/ProjectNav';
 import { type Locale, routing } from '@/i18n/routing';
 import { getProject, getProjectSlugs } from '@/lib/projects';
-import { buildAlternates, buildOgUrl, SITE_URL } from '@/lib/seo';
+import { SITE_URL, buildAlternates, buildOgUrl } from '@/lib/seo';
 
 type ProjectPageProps = {
   params: Promise<{ locale: string; slug: string }>;
