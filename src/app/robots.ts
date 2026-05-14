@@ -9,10 +9,10 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
-        // Pas d'admin/dashboard à protéger sur ce portfolio statique.
-        // /api/og est accessible publiquement (utilisé par les crawlers pour les previews sociales).
-        // On disallow uniquement les chemins d'internals Next (_next/).
+        // /api/og doit être accessible aux crawlers (LinkedIn, Slack, X) pour les link previews.
+        // La règle plus spécifique /api/og prime sur le disallow /api/ selon le standard robots.
+        allow: ['/', '/api/og'],
+        // Bloquer les autres routes /api/ (internes Next.js) mais pas /api/og.
         disallow: ['/api/'],
       },
     ],
