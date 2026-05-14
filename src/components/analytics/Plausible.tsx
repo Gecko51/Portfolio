@@ -11,15 +11,15 @@ export function Plausible() {
   return (
     <>
       {/* Script Plausible en mode "manual" — permet d'appeler window.plausible(event) custom
-          depuis analytics.ts sans que le script auto-track les pageviews double. */}
+          depuis analytics.ts. Contrepartie : manual.js désactive l'auto-tracking des navigations
+          SPA via History API, donc seul le pageview initial est tracké (suffisant pour ce portfolio). */}
       <Script
-        defer
         data-domain={domain}
         src="https://plausible.io/js/script.manual.js"
         strategy="afterInteractive"
       />
       {/* Init manuelle : crée une queue window.plausible si le script externe n'est pas encore chargé,
-          puis push le premier pageview. Plausible gère ensuite les navigations SPA via History API. */}
+          puis push le premier pageview au mount. Aucun pageview supplémentaire envoyé ensuite. */}
       <Script id="plausible-init" strategy="afterInteractive">
         {`window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
 plausible('pageview');`}
