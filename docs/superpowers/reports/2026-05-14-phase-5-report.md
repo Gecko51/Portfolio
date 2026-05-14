@@ -69,18 +69,29 @@ e517162 feat(i18n): add Contact namespace and remove placeholder
 > Résultats à remplir après exécution des commandes (Task 19).
 
 ### `pnpm tsc --noEmit`
-- Statut : ⏳ À confirmer
-- Erreurs : —
+- Statut : ✅ 0 erreur
+- Erreurs : aucune
 
 ### `pnpm lint`
-- Statut : ⏳ À confirmer
-- Warnings / erreurs : —
+- Statut : ✅ 0 erreur, 0 warning
+- Résultat : `Checked 76 files in 23ms. No fixes applied.`
 
 ### `pnpm build`
-- Statut : ⏳ À confirmer
-- Pages SSG générées : —
-- First Load JS (home) : —
-- Durée build : —
+- Statut : ✅ SUCCESS
+- Compilé en : 3.4s (Turbopack)
+- TypeScript check build : 3.1s
+- Pages générées : 16/16
+- Durée génération pages SSG : ~1400ms
+- Routes générées :
+  - `/ ` → Static (redirect middleware)
+  - `/_not-found` → Static
+  - `/fr` → SSG (generateStaticParams)
+  - `/en` → SSG (generateStaticParams)
+  - `/[locale]/projects/[slug]` → Dynamic (server-rendered on demand)
+  - `/api/og` → Dynamic (Edge Runtime — désactive SSG sur cette route)
+  - `/robots.txt` → Static
+  - `/sitemap.xml` → Static
+- First Load JS : non exposé par Turbopack build output (disponible après `next build` classique webpack)
 
 ---
 
