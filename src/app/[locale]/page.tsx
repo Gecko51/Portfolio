@@ -1,15 +1,12 @@
-// Page d'accueil — sections placeholder pour les ancres de navigation.
-// Le contenu réel arrive aux Phases 2-5 (hero, about, experience, projects, contact).
-// RSC pur (DEV-RULES §1) — pas de 'use client'. Traductions via getTranslations (DEV-RULES §10).
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+// Page d'accueil — toutes les sections du portfolio (Phase 5 close la home).
+// RSC pur (DEV-RULES §1) — pas de 'use client'. Traductions via getTranslations.
+import { setRequestLocale } from 'next-intl/server';
 
-// Import du composant About — section avec texte éditorial, portrait et marquee de stack.
+// Sections principales — server components pour la perf.
 import { About } from '@/components/sections/About/About';
-// Import du composant Experience — section timeline avec items main + compact militaire.
+import { Contact } from '@/components/sections/Contact/Contact';
 import { Experience } from '@/components/sections/Experience/Experience';
-// Import du composant Hero — section plein écran avec fond animé, nom et tagline.
 import { Hero } from '@/components/sections/Hero/Hero';
-// Import du composant Projects — galerie de projets avec scroll horizontal animé.
 import { Projects } from '@/components/sections/Projects/Projects';
 
 // Props : params est une Promise (Next 15+ App Router).
@@ -24,27 +21,18 @@ export default async function Home({ params }: HomeProps) {
   // Active le rendu statique pour cette locale.
   setRequestLocale(locale);
 
-  // Récupère les traductions du namespace 'Home' (DEV-RULES §10 : zéro string en dur).
-  const t = await getTranslations('Home');
-
   return (
     <>
       {/* Section Hero — plein écran avec fond animé, nom et tagline */}
       <Hero />
-
       {/* Section About — texte éditorial + portrait + marquee de stack technique */}
       <About />
-
       {/* Section Experience — timeline avec Gecko Mind, Reconversion, Armée de Terre */}
       <Experience />
-
       {/* Section Projects — galerie de projets avec scroll horizontal animé (GSAP desktop, snap mobile) */}
       <Projects />
-
-      {/* Section Contact — ancre #contact pour la navigation */}
-      <section id="contact" className="min-h-screen flex items-center justify-center">
-        <p className="text-fg-muted">{t('placeholderContact')}</p>
-      </section>
+      {/* Section Contact — magnetic links + CTAs (email, LinkedIn, GitHub, Gecko Mind) */}
+      <Contact />
     </>
   );
 }
