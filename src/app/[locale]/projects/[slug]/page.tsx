@@ -8,8 +8,9 @@ import { ProjectContent } from '@/components/sections/Projects/ProjectDetail/Pro
 import { ProjectGallery } from '@/components/sections/Projects/ProjectDetail/ProjectGallery';
 import { ProjectHero } from '@/components/sections/Projects/ProjectDetail/ProjectHero';
 import { ProjectNav } from '@/components/sections/Projects/ProjectDetail/ProjectNav';
-import { routing } from '@/i18n/routing';
+import { type Locale, routing } from '@/i18n/routing';
 import { getProject, getProjectSlugs } from '@/lib/projects';
+import { buildAlternates, buildOgUrl, SITE_URL } from '@/lib/seo';
 
 type ProjectPageProps = {
   params: Promise<{ locale: string; slug: string }>;
@@ -27,20 +28,45 @@ export async function generateStaticParams() {
   return results;
 }
 
-// Metadata dynamique par projet (SEO + Open Graph).
+// Metadata dynamique par projet (SEO + Open Graph + hreflang alternates).
+// Note : getProject retourne le projet complet (frontmatter + MDX compilé).
+// On réutilise le même appel pour éviter une double lecture fs.
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
-  const project = await getProject(slug, locale);
+  // Cast safe : la locale a déjà été validée par le layout parent (hasLocale).
+  const typedLocale = locale as Locale;
+
+  // Récupère le frontmatter via le helper existant projects.ts.
+  const project = await getProject(slug, typedLocale);
+
+  // Si pas de projet, on retourne un metadata minimal (la page elle-même fera notFound()).
   if (!project) {
     return { title: 'Project not found' };
   }
+
+  const canonicalPath = `/projects/${slug}`;
+  const ogUrl = buildOgUrl({
+    title: project.title,
+    subtitle: project.tagline,
+    locale: typedLocale,
+  });
+
   return {
     title: `${project.title} — Guillaume Gay`,
     description: project.tagline,
+    alternates: buildAlternates(canonicalPath),
     openGraph: {
-      title: `${project.title} — Guillaume Gay`,
+      title: project.title,
       description: project.tagline,
-      images: [project.cover],
+      url: `${SITE_URL}/${typedLocale}${canonicalPath}`,
+      type: 'article',
+      images: [{ url: ogUrl, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: project.title,
+      description: project.tagline,
+      images: [ogUrl],
     },
   };
 }
