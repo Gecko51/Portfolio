@@ -11,7 +11,11 @@ export type ContactLink = {
 
 export const CONTACT_LINKS: readonly ContactLink[] = [
   { id: 'email', href: 'mailto:gay.guillaume@orange.fr', trackEvent: 'click_contact_email' },
-  { id: 'linkedin', href: 'https://www.linkedin.com/in/gay-guillaume/', trackEvent: 'click_contact_linkedin' },
+  {
+    id: 'linkedin',
+    href: 'https://www.linkedin.com/in/gay-guillaume/',
+    trackEvent: 'click_contact_linkedin',
+  },
   { id: 'github', href: 'https://github.com/Gecko51', trackEvent: 'click_contact_github' },
   { id: 'gecko-mind', href: 'https://geckomind.fr', trackEvent: 'click_contact_geckomind' },
 ] as const;

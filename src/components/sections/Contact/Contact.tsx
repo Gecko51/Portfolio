@@ -30,9 +30,27 @@ export async function Contact() {
   // Map les links de la source unique vers le rendu — label/value/aria via t().
   // Conserver l'ordre : email d'abord (CTA principal), puis socials.
   const ctaConfig = [
-    { id: 'email' as const, label: t('emailLabel'), value: t('emailValue'), aria: t('ariaEmail'), external: false },
-    { id: 'linkedin' as const, label: t('linkedinLabel'), value: t('linkedinValue'), aria: t('ariaLinkedin'), external: true },
-    { id: 'github' as const, label: t('githubLabel'), value: t('githubValue'), aria: t('ariaGithub'), external: true },
+    {
+      id: 'email' as const,
+      label: t('emailLabel'),
+      value: t('emailValue'),
+      aria: t('ariaEmail'),
+      external: false,
+    },
+    {
+      id: 'linkedin' as const,
+      label: t('linkedinLabel'),
+      value: t('linkedinValue'),
+      aria: t('ariaLinkedin'),
+      external: true,
+    },
+    {
+      id: 'github' as const,
+      label: t('githubLabel'),
+      value: t('githubValue'),
+      aria: t('ariaGithub'),
+      external: true,
+    },
     {
       id: 'gecko-mind' as const,
       label: t('geckoMindLabel'),

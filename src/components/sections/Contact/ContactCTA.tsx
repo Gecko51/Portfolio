@@ -26,7 +26,15 @@ type ContactCTAProps = {
 // Distance max (px) de translation du lien vers le curseur.
 const MAGNETIC_STRENGTH = 0.25;
 
-export function ContactCTA({ href, ariaLabel, label, value, trackEvent, external, icon }: ContactCTAProps) {
+export function ContactCTA({
+  href,
+  ariaLabel,
+  label,
+  value,
+  trackEvent,
+  external,
+  icon,
+}: ContactCTAProps) {
   // Ref vers le <a> pour appliquer le transform GSAP.
   const linkRef = useRef<HTMLAnchorElement>(null);
 
@@ -92,7 +100,9 @@ export function ContactCTA({ href, ariaLabel, label, value, trackEvent, external
           {value}
         </span>
       </span>
-      {icon ? <span className="text-fg-muted transition-transform group-hover:translate-x-1">{icon}</span> : null}
+      {icon ? (
+        <span className="text-fg-muted transition-transform group-hover:translate-x-1">{icon}</span>
+      ) : null}
     </a>
   );
 }

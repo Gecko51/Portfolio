@@ -3,7 +3,10 @@
 // Ref: https://plausible.io/docs/custom-event-goals
 
 // Type minimal de l'API window.plausible exposée par le script Plausible.
-type PlausibleFn = (event: string, options?: { props?: Record<string, string | number | boolean> }) => void;
+type PlausibleFn = (
+  event: string,
+  options?: { props?: Record<string, string | number | boolean> },
+) => void;
 
 // Étend Window pour TypeScript — pas de any (DEV-RULES §10).
 declare global {
