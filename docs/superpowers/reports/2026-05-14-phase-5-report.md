@@ -126,37 +126,45 @@ e517162 feat(i18n): add Contact namespace and remove placeholder
 
 ## 5. Étapes externes Phase 5 → v1.0-mvp mise en ligne
 
+> Choix de plateforme : **Netlify** (au lieu de Vercel prévu initialement par le PRD).
+> La config repo est dans `netlify.toml`. Voir aussi la section "Déploiement Netlify" du README pour le détail complet.
+
 ### A. Plausible Analytics
 1. Créer un compte sur [plausible.io](https://plausible.io)
 2. Ajouter un nouveau site — Domain : `guillaumegay.fr` (ou ton domaine final)
-3. Définir `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=guillaumegay.fr` dans les env vars Vercel (voir étape C)
+3. Définir `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=guillaumegay.fr` dans les env vars Netlify (voir étape C)
 4. Créer les Goals custom dans Plausible : `cv_download` et `locale_switch`
 
-### B. Connecter Vercel au repo
-1. [vercel.com/new](https://vercel.com/new) → Import Git Repository
-2. Sélectionner le repo du portfolio
-3. Framework : **Next.js** (auto-détecté)
-4. Build Command : `pnpm build`
-5. Install Command : `pnpm install`
+### B. Connecter Netlify au repo
+1. [app.netlify.com/start](https://app.netlify.com/start) → Import an existing project → GitHub
+2. Sélectionner le repo `Gecko51/Portfolio`
+3. Laisser les valeurs par défaut — `netlify.toml` configure build + plugin Next.js
+4. Deploy. Première URL servie sur `https://[your-site].netlify.app`.
 
-### C. Configurer les env vars Vercel (Settings → Environment Variables)
+### C. Configurer les env vars Netlify (Site settings → Environment variables)
 
 | Variable | Valeur | Scope |
 |---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | `https://guillaumegay.fr` | Production |
-| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | `guillaumegay.fr` | Production |
-| `NEXT_PUBLIC_BUILD_HASH` | `$VERCEL_GIT_COMMIT_SHA` | Production |
+| `NEXT_PUBLIC_SITE_URL` | `https://[your-site].netlify.app` puis `https://guillaumegay.fr` | Production |
+| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | `guillaumegay.fr` (sans `https://`) | Production |
+| `NEXT_PUBLIC_BUILD_HASH` | _laisser vide_ — déjà mappé sur `$COMMIT_REF` dans `netlify.toml` | — |
 
-### D. DNS Cloudflare → Vercel
-- Désactiver le proxy Cloudflare (nuage gris) sur les enregistrements pointant vers Vercel
-- **CNAME** `www` → `cname.vercel-dns.com` (pour sous-domaine www)
-- **A records** pour zone apex : `76.76.21.21` et `76.76.21.22` (IPs Vercel)
-- Connecter le domaine dans Vercel → Settings → Domains
+Après modif d'une env var : **Trigger deploy** pour qu'elle soit inlinée au nouveau build.
+
+### D. Domaine custom (étape ultérieure, après validation sur netlify.app)
+Deux options DNS au choix — voir README section 3 pour le détail :
+- **Netlify DNS** (simple) : changer les nameservers du registrar vers les 4 NS Netlify
+- **Cloudflare devant Netlify** : CNAME `www` + flattening apex, désactiver le proxy le temps de la validation SSL
+
+Une fois branché, **mettre à jour `NEXT_PUBLIC_SITE_URL`** vers le domaine final et redéployer (sinon OG/sitemap/canonical pointent vers le sous-domaine netlify.app).
 
 ### E. Vérifier post-deploy
 - [ ] Site accessible sur `https://[domain]/fr` et `https://[domain]/en`
 - [ ] Redirections `/` → `/fr` ou `/en` fonctionnelles (selon Accept-Language)
-- [ ] HTTPS actif (certificat Let's Encrypt auto-provisionné par Vercel)
+- [ ] HTTPS actif (certificat Let's Encrypt auto-provisionné par Netlify)
+- [ ] Route `/api/og` retourne une image PNG 1200×630
+- [ ] `/sitemap.xml` et `/robots.txt` accessibles avec URLs absolues du site live
+- [ ] Header `Content-Security-Policy` présent (`curl -sI https://[domain]/fr`)
 - [ ] Plausible reçoit les visites (dashboard plausible.io → Real-time)
 - [ ] Effectuer la QA Lighthouse complète (section 4 ci-dessus)
 

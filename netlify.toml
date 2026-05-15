@@ -1,0 +1,31 @@
+# Configuration Netlify — voir https://docs.netlify.com/configure-builds/file-based-configuration/
+# Le plugin officiel Next.js est auto-détecté quand un netlify.toml ou un Next project est présent,
+# mais on le déclare explicitement pour rendre le build reproductible et lisible.
+
+[build]
+  # Commande de build — pnpm est auto-détecté par la présence de pnpm-lock.yaml.
+  command = "pnpm build"
+  # Répertoire de sortie Next.js (défaut). Netlify l'ignore au runtime mais l'utilise pour le cache.
+  publish = ".next"
+
+[build.environment]
+  # Node 20 LTS — requis par Next 16 (>=18.18) et compat pnpm 11.
+  NODE_VERSION = "20"
+  # Active pnpm via Corepack (Netlify détecte le lockfile mais explicite ici pour fiabilité).
+  NPM_FLAGS = "--version"
+  # Hash de commit injecté au build pour l'afficher dans le Footer.
+  # Netlify expose COMMIT_REF — on le mappe sur la var publique consommée par src/components/layout/Footer.tsx.
+  NEXT_PUBLIC_BUILD_HASH = "$COMMIT_REF"
+
+# Plugin officiel Next.js de Netlify — gère :
+# - Server Components, RSC, route handlers
+# - generateMetadata async + sitemap.ts + robots.ts
+# - Edge functions (/api/og en runtime edge)
+# - Middleware next-intl (matcher + locale negotiation)
+# - Image optimization Next/Image
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Note importante :
+# Les headers CSP/HSTS/X-Frame-Options sont définis côté code dans next.config.ts (headers async).
+# Le plugin Next propage ces headers à l'edge Netlify. Pas besoin de [[headers]] ici.
