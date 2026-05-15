@@ -18,11 +18,9 @@
     "kicker": "Contact",
     "title": "On en parle ?",
     "intro": "Que tu sois solopreneur, freelance ou dirigeant TPE/PME B2B, parlons de ton acquisition et de ton automatisation.",
-    "emailLabel": "Email",
     "linkedinLabel": "LinkedIn",
     "githubLabel": "GitHub",
     "geckoMindLabel": "Gecko Mind",
-    "ariaEmail": "Envoyer un email à Guillaume Gay",
     "ariaLinkedin": "Profil LinkedIn de Guillaume Gay",
     "ariaGithub": "Profil GitHub de Guillaume Gay",
     "ariaGeckoMind": "Site Gecko Mind"
@@ -35,7 +33,7 @@
   "About": {
     "kicker": "À propos",
     "paragraph1": "Solopreneur tech, AI Builder. Après 21 ans dans l'Armée de Terre, j'ai pivoté en 2024 vers la programmation assistée par IA et l'automatisation B2B.",
-    "paragraph2": "Je conçois et opère Gecko Mind — un service done-for-you de prospection LinkedIn et création de contenu pour solopreneurs, freelances et dirigeants TPE/PME B2B.",
+    "paragraph2": "Je conçois et opère Gecko Mind, un service done-for-you de prospection LinkedIn et création de contenu pour solopreneurs, freelances et dirigeants TPE/PME B2B.",
     "paragraph3": "Stack maison : écosystème Claude (Code, Cowork, MCP, API), n8n, Airtable, extensions Chrome custom. Approche pragmatique, ship fast, architecture modulaire.",
     "portraitAlt": "Portrait de Guillaume Gay"
   },

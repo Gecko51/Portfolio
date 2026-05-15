@@ -6,7 +6,6 @@
 // Le mode est choisi via useMediaQuery (DEV-RULES §10 anti-scroll-jacking).
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { type ReactNode, useRef } from 'react';
 
 import { useMediaQuery } from '@/hooks/useMediaQuery';
@@ -42,7 +41,7 @@ export function ProjectsGallery({ children, projectCount }: ProjectsGalleryProps
 
       // Pin de la section pendant que le scroll vertical pilote la translation horizontale.
       // scrub: 1 → adoucit la translation (1s lag, feel smooth cohérent avec Lenis).
-      const tween = gsap.to(strip, {
+      gsap.to(strip, {
         x: () => -getDistance(),
         ease: 'none',
         scrollTrigger: {
@@ -54,17 +53,17 @@ export function ProjectsGallery({ children, projectCount }: ProjectsGalleryProps
           invalidateOnRefresh: true,
         },
       });
-
-      return () => {
-        // Cleanup explicite : tue le ScrollTrigger ET le tween.
-        // Évite les fuites mémoire en mode StrictMode (double-mount React).
-        tween.scrollTrigger?.kill();
-        tween.kill();
-        // Refresh global pour que les autres triggers se repositionnent correctement.
-        ScrollTrigger.refresh();
-      };
+      // Pas de cleanup explicite : revertOnUpdate (cf. options ci-dessous) appelle context.revert()
+      // qui kill les tweens, retire le pin-spacer du DOM et restore les inline styles.
     },
-    { scope: containerRef, dependencies: [isDesktop, reducedMotion, projectCount] },
+    {
+      scope: containerRef,
+      dependencies: [isDesktop, reducedMotion, projectCount],
+      // revertOnUpdate: au passage desktop↔mobile (changement de isDesktop via breakpoint 768px),
+      // le pin-spacer GSAP doit être retiré du DOM sinon la section reste haute de ~1994px en mobile.
+      // Doc officielle @gsap/react : revertOnUpdate déclenche context.revert() au sync des deps.
+      revertOnUpdate: true,
+    },
   );
 
   // Classe du strip adaptée selon desktop ou mobile.

@@ -7,8 +7,6 @@
     </linearGradient>
   </defs>
   <rect width="800" height="1000" fill="url(#g4)"/>
-  <text x="50%" y="48%" text-anchor="middle" font-family="monospace" font-size="48"
+  <text x="50%" y="30%" text-anchor="middle" font-family="monospace" font-size="48"
         fill="#FF5B1F" opacity="0.85" letter-spacing="2">geckomind.fr</text>
-  <text x="50%" y="56%" text-anchor="middle" font-family="monospace" font-size="14"
-        fill="#8a8a8a" opacity="0.6" letter-spacing="4">LANDING PAGE</text>
 </svg>

@@ -6,10 +6,8 @@
     </linearGradient>
   </defs>
   <rect width="800" height="1000" fill="url(#g3)"/>
-  <text x="50%" y="44%" text-anchor="middle" font-family="Georgia, serif" font-style="italic"
+  <text x="50%" y="20%" text-anchor="middle" font-family="Georgia, serif" font-style="italic"
         font-size="78" fill="#F5F5F5" opacity="0.85">Skill</text>
-  <text x="50%" y="54%" text-anchor="middle" font-family="Georgia, serif" font-style="italic"
+  <text x="50%" y="30%" text-anchor="middle" font-family="Georgia, serif" font-style="italic"
         font-size="78" fill="#FF5B1F" opacity="0.85">Ecosystem</text>
-  <text x="50%" y="64%" text-anchor="middle" font-family="monospace" font-size="14"
-        fill="#8a8a8a" opacity="0.6" letter-spacing="4">25+ SKILLS CLAUDE</text>
 </svg>

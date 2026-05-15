@@ -29,18 +29,16 @@ export async function Contact() {
 
   // Map les links de la source unique vers le rendu.
   // label/aria via t() (localisables), value via link.displayValue (non-localisable — source unique contact-links.ts).
-  // Conserver l'ordre : email d'abord (CTA principal), puis socials.
+  // Ordre : LinkedIn d'abord (CTA principal), puis GitHub, puis Gecko Mind.
   const ctaConfig = CONTACT_LINKS.map((link) => {
     // Chaque id correspond exactement à une clé de traduction — mapping explicite pour TypeScript.
     const labelKey = {
-      email: 'emailLabel',
       linkedin: 'linkedinLabel',
       github: 'githubLabel',
       'gecko-mind': 'geckoMindLabel',
     } as const;
 
     const ariaKey = {
-      email: 'ariaEmail',
       linkedin: 'ariaLinkedin',
       github: 'ariaGithub',
       'gecko-mind': 'ariaGeckoMind',
@@ -55,7 +53,8 @@ export async function Contact() {
       // displayValue vient de contact-links.ts — source unique, pas de duplication dans les messages.
       value: link.displayValue,
       aria: t(ariaKey[link.id]),
-      external: link.id !== 'email',
+      // Tous les liens restants pointent vers des sites externes → toujours _blank.
+      external: true,
     };
   });
 

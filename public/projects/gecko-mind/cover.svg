@@ -6,8 +6,6 @@
     </linearGradient>
   </defs>
   <rect width="800" height="1000" fill="url(#g1)"/>
-  <text x="50%" y="46%" text-anchor="middle" font-family="Georgia, serif" font-style="italic"
+  <text x="50%" y="30%" text-anchor="middle" font-family="Georgia, serif" font-style="italic"
         font-size="92" fill="#FF5B1F" opacity="0.85">Gecko Mind</text>
-  <text x="50%" y="56%" text-anchor="middle" font-family="monospace" font-size="14"
-        fill="#8a8a8a" opacity="0.6" letter-spacing="4">PROSPECTION LINKEDIN B2B</text>
 </svg>

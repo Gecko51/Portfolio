@@ -40,10 +40,11 @@ export function ProjectCard({ project, viewProjectLabel }: ProjectCardProps) {
         sizes="(min-width: 1024px) 60vw, (min-width: 768px) 80vw, 90vw"
       />
 
-      {/* Overlay dégradé pour la lisibilité du texte. */}
+      {/* Overlay dégradé renforcé : zone basse 100% opaque pour isoler le footer du titre SVG,
+          transition douce jusqu'au milieu, puis transparent en haut pour laisser voir le cover. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-bg/95 via-bg/40 to-transparent"
+        className="absolute inset-0 bg-gradient-to-t from-bg from-30% via-bg/60 via-55% to-transparent"
       />
 
       {/* Contenu en bas de la card. */}
@@ -52,7 +53,9 @@ export function ProjectCard({ project, viewProjectLabel }: ProjectCardProps) {
           {project.year} · {project.role}
         </span>
         <h3 className="font-display text-3xl md:text-5xl tracking-tight italic">{project.title}</h3>
-        <p className="text-sm md:text-base text-fg-muted max-w-md">{project.tagline}</p>
+        {/* line-clamp-2 cap la tagline à 2 lignes max — évite que le footer dépasse en hauteur
+            sur mobiles très courts (ex: 375×600) et chevauche le titre SVG en background. */}
+        <p className="text-sm md:text-base text-fg-muted max-w-md line-clamp-2">{project.tagline}</p>
         <ul className="flex flex-wrap gap-2 mt-2">
           {project.stack.slice(0, 4).map((tech) => (
             <li key={tech}>

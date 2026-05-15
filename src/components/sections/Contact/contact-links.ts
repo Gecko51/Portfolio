@@ -3,22 +3,16 @@
 // displayValue : valeur d'affichage non-localisable (email, handle, domaine) — inutile de la dupliquer dans les fichiers de messages.
 export type ContactLink = {
   // Clé d'identification stable (utilisée pour le tracking analytics).
-  id: 'email' | 'linkedin' | 'github' | 'gecko-mind';
-  // URL absolue ou mailto: pour ouverture directe.
+  id: 'linkedin' | 'github' | 'gecko-mind';
+  // URL absolue pour ouverture directe.
   href: string;
-  // Préfixe pour Plausible event (ex: 'click_contact_email').
+  // Préfixe pour Plausible event (ex: 'click_contact_linkedin').
   trackEvent: string;
   // Valeur affichée dans le CTA — non-localisable (même en FR et EN).
   displayValue: string;
 };
 
 export const CONTACT_LINKS: readonly ContactLink[] = [
-  {
-    id: 'email',
-    href: 'mailto:gay.guillaume@orange.fr',
-    trackEvent: 'click_contact_email',
-    displayValue: 'gay.guillaume@orange.fr',
-  },
   {
     id: 'linkedin',
     href: 'https://www.linkedin.com/in/gay-guillaume/',

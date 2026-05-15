@@ -9,12 +9,17 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 // 'unsafe-inline' sur script-src est nécessaire pour :
 //   - JSON-LD Person (balise <script type="application/ld+json"> inline)
 //   - Script d'init Plausible (queue window.plausible avant chargement du script externe)
-// Mitigé par les autres restrictions (no eval, frame-ancestors none, object-src none).
+// Mitigé par les autres restrictions (frame-ancestors none, object-src none).
 // Passage à une nonce/hash strategy envisageable en v2 avec Next.js Middleware.
+const isDev = process.env.NODE_ENV === 'development';
+
+// 'unsafe-eval' ajouté UNIQUEMENT en dev — requis par Turbopack/React 19 pour reconstruire
+// les callstacks via eval() en mode debug. React garantit zéro eval() en production
+// (cf. message du runtime React). La CSP de prod reste donc strictement durcie.
 const cspDirectives = [
   "default-src 'self'",
   // Plausible script externalisé ; 'unsafe-inline' requis pour JSON-LD + init Plausible inline.
-  "script-src 'self' 'unsafe-inline' https://plausible.io",
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://plausible.io`,
   // Styles inline tolérés (Tailwind v4 utilities injectées au runtime + Framer Motion inline styles).
   "style-src 'self' 'unsafe-inline'",
   // Images : self + data: pour SVG inline + blob: pour Next/Image blur placeholders.
