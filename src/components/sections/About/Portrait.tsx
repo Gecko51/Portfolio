@@ -7,9 +7,16 @@ type PortraitProps = {
   alt: string;
 };
 
+// Dégradé de masque : transparent aux 12% du haut et du bas → l'image se fond dans le fond sombre.
+// Appliqué via mask-image (alpha) ; -webkit- pour Safari. Effet subtil, le centre reste 100% opaque.
+const FADE_MASK = 'linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%)';
+
 export function Portrait({ alt }: PortraitProps) {
   return (
-    <div className="relative aspect-[4/5] w-full overflow-hidden rounded">
+    <div
+      className="relative aspect-[4/5] w-full overflow-hidden rounded"
+      style={{ WebkitMaskImage: FADE_MASK, maskImage: FADE_MASK }}
+    >
       <Image
         src="/images/portrait-guillaume.jpg"
         alt={alt}
