@@ -16,10 +16,11 @@ export async function About() {
   const paragraphs = [t('paragraph1'), t('paragraph2'), t('paragraph3')] as const;
 
   // Tableau des 3 lignes du marquee : libellé de catégorie + items séparés par des tirets.
+  // Catégories alignées sur le CV : Front-end / Back-end / Déploiement.
   const stackRows = [
-    { label: tStack('categoryAI'), items: tStack('itemsAI') },
-    { label: tStack('categoryWeb'), items: tStack('itemsWeb') },
-    { label: tStack('categoryAutomation'), items: tStack('itemsAutomation') },
+    { label: tStack('categoryFrontend'), items: tStack('itemsFrontend') },
+    { label: tStack('categoryBackend'), items: tStack('itemsBackend') },
+    { label: tStack('categoryDeploy'), items: tStack('itemsDeploy') },
   ] as const;
 
   return (

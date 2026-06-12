@@ -17,16 +17,17 @@ export async function Experience() {
     role: t('geckoMindRole'),
     organization: t('geckoMindOrg'),
     description: t('geckoMindDescription'),
-    stack: ['Claude Code', 'Anthropic API', 'n8n', 'Airtable', 'Next.js', 'TypeScript'],
+    stack: ['Python', 'LangChain', 'FastAPI', 'Claude Code', 'Supabase', 'Next.js'],
     variant: 'main',
   };
 
-  const reconversion: ExperienceItem = {
-    period: t('reconversionPeriod'),
-    role: t('reconversionRole'),
-    organization: t('reconversionOrg'),
-    description: t('reconversionDescription'),
-    stack: ['Next.js', 'React', 'TypeScript', 'Anthropic API'],
+  // Gecko Design — activité web/SEO 2024-2025 (cf. CV), entre la reconversion et Gecko Mind.
+  const geckoDesign: ExperienceItem = {
+    period: t('geckoDesignPeriod'),
+    role: t('geckoDesignRole'),
+    organization: t('geckoDesignOrg'),
+    description: t('geckoDesignDescription'),
+    stack: ['WordPress', 'PHP', 'JavaScript', 'SEO'],
     variant: 'main',
   };
 
@@ -56,7 +57,7 @@ export async function Experience() {
         </header>
         <Timeline>
           <TimelineItem item={geckoMind} />
-          <TimelineItem item={reconversion} />
+          <TimelineItem item={geckoDesign} />
           <TimelineMilitary
             item={army}
             softSkillsKicker={t('softSkillsKicker')}

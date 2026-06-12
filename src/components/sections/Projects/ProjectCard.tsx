@@ -55,7 +55,9 @@ export function ProjectCard({ project, viewProjectLabel }: ProjectCardProps) {
         <h3 className="font-display text-3xl md:text-5xl tracking-tight italic">{project.title}</h3>
         {/* line-clamp-2 cap la tagline à 2 lignes max — évite que le footer dépasse en hauteur
             sur mobiles très courts (ex: 375×600) et chevauche le titre SVG en background. */}
-        <p className="text-sm md:text-base text-fg-muted max-w-md line-clamp-2">{project.tagline}</p>
+        <p className="text-sm md:text-base text-fg-muted max-w-md line-clamp-2">
+          {project.tagline}
+        </p>
         <ul className="flex flex-wrap gap-2 mt-2">
           {project.stack.slice(0, 4).map((tech) => (
             <li key={tech}>

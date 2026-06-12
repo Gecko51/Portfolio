@@ -1,0 +1,39 @@
+---
+slug: agent-playground
+title: Agent Playground
+tagline: Configure LangChain agents live from the browser — real-time streaming
+year: 2026
+role: Full-stack Developer
+stack:
+  - Next.js
+  - FastAPI
+  - Python
+  - LangChain
+  - OpenRouter
+  - Docker
+cover: /projects/agent-playground/cover.png
+gallery:
+  - /projects/agent-playground/screen-1.png
+  - /projects/agent-playground/screen-2.png
+links:
+  github: https://github.com/Gecko51/LangChain_Full_Stack
+  live: https://agentlangchainfullstack.vercel.app
+order: 4
+featured: true
+---
+
+## The concept
+
+Testing a LangChain agent normally means editing code and restarting the server for every tweak. Agent Playground moves all that tuning into the browser: system prompt, model, temperature, conversation memory — every setting changes live mid-conversation, no restart.
+
+## Under the hood
+
+Next.js 15 / React 19 / Tailwind v4 front end, Python FastAPI back end with LangChain (`create_agent`). Token-by-token streaming and tool calls flow over Server-Sent Events. OpenRouter unlocks every model on the market with a single key. Everything is containerized with Docker Compose: front deployed on Vercel, API on Render.
+
+## Features
+
+- Real-time streaming of tokens and tool calls
+- Built-in tools: web search, calculator, date/time, HTTP requests
+- Multi-model via OpenRouter, hot-swappable
+- User accounts, projects and conversation history
+- Saved prompts and adjustable conversation memory

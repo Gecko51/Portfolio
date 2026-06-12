@@ -56,6 +56,31 @@ export async function ProjectHero({ project, locale }: ProjectHeroProps) {
             </li>
           ))}
         </ul>
+        {/* Liens externes (frontmatter links) — affichés seulement s'ils existent. */}
+        {(project.links.live || project.links.github) && (
+          <div className="flex flex-wrap gap-8 mt-4">
+            {project.links.live && (
+              <a
+                href={project.links.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-xs uppercase tracking-[0.2em] text-accent hover:text-fg transition-colors"
+              >
+                {t('viewLive')} ↗
+              </a>
+            )}
+            {project.links.github && (
+              <a
+                href={project.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-xs uppercase tracking-[0.2em] text-accent hover:text-fg transition-colors"
+              >
+                {t('viewGithub')} ↗
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </header>
   );

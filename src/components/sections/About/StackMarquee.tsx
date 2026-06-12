@@ -1,4 +1,4 @@
-// StackMarquee — 3 lignes (AI/Web/Automation) défilant horizontalement en boucle infinie.
+// StackMarquee — 3 lignes (Front-end/Back-end/Déploiement) défilant horizontalement en boucle infinie.
 // Server component : pas de JS d'animation, tout est en CSS @keyframes.
 // Pattern : on duplique le contenu pour avoir une translation continue sans saut visible.
 type StackMarqueeProps = {
