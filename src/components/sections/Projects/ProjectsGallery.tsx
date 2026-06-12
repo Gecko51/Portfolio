@@ -46,9 +46,13 @@ export function ProjectsGallery({ children, projectCount }: ProjectsGalleryProps
         ease: 'none',
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top top',
+          // 'center center' : le pin (et donc la translation horizontale) s'enclenche quand le
+          // centre du strip de cards rejoint le centre du viewport → cards centrées verticalement.
+          start: 'center center',
           end: () => `+=${getDistance()}`,
           pin: true,
+          // anticipatePin : pré-applique le pin un poil avant pour éviter un micro-saut à l'engagement.
+          anticipatePin: 1,
           scrub: 1,
           invalidateOnRefresh: true,
         },

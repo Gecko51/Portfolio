@@ -19,9 +19,10 @@ export async function Projects() {
   const projects = await getAllProjectsMeta(locale);
 
   return (
-    <section id="projects" className="relative py-32 md:py-48">
+    <section id="projects" className="relative pt-20 pb-32 md:pt-28 md:pb-48">
       {/* Header de section : kicker mono, titre display, hint de scroll */}
-      <div className="mx-auto max-w-7xl px-6 md:px-12 flex flex-col gap-12">
+      {/* mb-* : écarte le bloc texte des cards de la galerie en dessous. */}
+      <div className="mx-auto max-w-7xl px-6 md:px-12 flex flex-col gap-12 mb-12 md:mb-16">
         <header className="flex flex-col gap-3">
           {/* Kicker — label mono minuscule au-dessus du titre principal. */}
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">
