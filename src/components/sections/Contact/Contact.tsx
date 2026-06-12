@@ -35,13 +35,13 @@ export async function Contact() {
     const labelKey = {
       linkedin: 'linkedinLabel',
       github: 'githubLabel',
-      'gecko-mind': 'geckoMindLabel',
+      email: 'emailLabel',
     } as const;
 
     const ariaKey = {
       linkedin: 'ariaLinkedin',
       github: 'ariaGithub',
-      'gecko-mind': 'ariaGeckoMind',
+      email: 'ariaEmail',
     } as const;
 
     return {
@@ -53,8 +53,8 @@ export async function Contact() {
       // displayValue vient de contact-links.ts — source unique, pas de duplication dans les messages.
       value: link.displayValue,
       aria: t(ariaKey[link.id]),
-      // Tous les liens restants pointent vers des sites externes → toujours _blank.
-      external: true,
+      // external porté depuis la source unique : true pour LinkedIn/GitHub (_blank), false pour l'email (mailto).
+      external: link.external,
     };
   });
 

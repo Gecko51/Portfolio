@@ -1,7 +1,7 @@
-// TimelineMilitary — bloc compact pour les 21 ans d'Armée de Terre.
-// Plus discret typographiquement (texte plus petit, opacity réduite, pas de stack tags).
-// Sous le bloc principal, un encart "Compétences transférables" met en valeur les soft skills.
-// Le militaire est présenté comme contexte ; la VALEUR mise en avant ce sont les transférables.
+// TimelineMilitary — bloc pour les 21 ans d'Armée de Terre.
+// Le bloc texte (période / rôle / description) est aligné typographiquement sur TimelineItem
+// (mêmes tailles, mêmes couleurs, même pastille accent) pour rester cohérent avec le reste de la section.
+// En plus du bloc texte, un encart "Compétences transférables" met en valeur les soft skills.
 
 import type { ExperienceItem } from '@/types/experience';
 
@@ -14,21 +14,25 @@ type TimelineMilitaryProps = {
 export function TimelineMilitary({ item, softSkillsKicker, softSkills }: TimelineMilitaryProps) {
   return (
     <article data-timeline-item className="relative flex flex-col gap-6 pl-8 md:pl-12">
-      {/* Pastille plus discrète (couleur muted au lieu d'accent) pour le bloc compact. */}
+      {/* Pastille accent, identique aux autres items de la timeline. */}
       <span
         aria-hidden="true"
-        className="absolute left-0 top-2 h-2 w-2 rounded-full bg-fg-muted ring-4 ring-bg"
+        className="absolute left-0 top-2 h-2 w-2 rounded-full bg-accent ring-4 ring-bg"
       />
 
-      {/* Bloc compact : texte muted, taille réduite. */}
-      <div className="flex flex-col gap-2 opacity-80">
-        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg-muted">
-          {item.period}
-        </span>
-        <h3 className="font-display text-xl md:text-2xl tracking-tight text-fg-muted">
-          {item.role} <span className="italic">— {item.organization}</span>
-        </h3>
-        <p className="text-sm text-fg-muted leading-relaxed max-w-2xl">{item.description}</p>
+      {/* Bloc texte aligné sur TimelineItem : mêmes tailles/couleurs, plus d'opacity réduite. */}
+      <div className="flex flex-col gap-4">
+        <header className="flex flex-col gap-1">
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg-muted">
+            {item.period}
+          </span>
+          <h3 className="font-display text-2xl md:text-3xl tracking-tight">
+            {item.role} <span className="text-fg-muted italic">— {item.organization}</span>
+          </h3>
+        </header>
+        <p className="text-base md:text-lg text-fg-muted leading-relaxed max-w-2xl">
+          {item.description}
+        </p>
       </div>
 
       {/* Encart soft skills : c'est la valeur, mis en avant visuellement. */}

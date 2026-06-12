@@ -20,10 +20,10 @@
     "intro": "Vous recrutez un développeur full-stack orienté IA ? CDI ou mission freelance : parlons de ce que je peux apporter à votre équipe.",
     "linkedinLabel": "LinkedIn",
     "githubLabel": "GitHub",
-    "geckoMindLabel": "Gecko Mind",
+    "emailLabel": "Email",
     "ariaLinkedin": "Profil LinkedIn de Guillaume Gay",
     "ariaGithub": "Profil GitHub de Guillaume Gay",
-    "ariaGeckoMind": "Site Gecko Mind"
+    "ariaEmail": "Envoyer un email à Guillaume Gay"
   },
   "Hero": {
     "name": "Guillaume Gay",

@@ -20,10 +20,10 @@
     "intro": "Hiring a full-stack developer with AI expertise? Full-time role, contract or freelance engagement — let's talk about what I can bring to your team.",
     "linkedinLabel": "LinkedIn",
     "githubLabel": "GitHub",
-    "geckoMindLabel": "Gecko Mind",
+    "emailLabel": "Email",
     "ariaLinkedin": "Guillaume Gay's LinkedIn profile",
     "ariaGithub": "Guillaume Gay's GitHub profile",
-    "ariaGeckoMind": "Gecko Mind website"
+    "ariaEmail": "Email Guillaume Gay"
   },
   "Hero": {
     "name": "Guillaume Gay",

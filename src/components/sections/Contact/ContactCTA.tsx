@@ -23,8 +23,9 @@ type ContactCTAProps = {
   icon?: ReactNode;
 };
 
-// Distance max (px) de translation du lien vers le curseur.
-const MAGNETIC_STRENGTH = 0.25;
+// Fraction de la distance curseur→centre appliquée en translation. Volontairement faible (0.12)
+// pour un effet magnétique discret et non « lurch » sur un lien pleine largeur.
+const MAGNETIC_STRENGTH = 0.12;
 
 export function ContactCTA({
   href,
@@ -49,22 +50,25 @@ export function ContactCTA({
       const el = linkRef.current;
       if (!el) return;
 
-      // Quick setters GSAP — meilleure perf que gsap.to() à chaque mousemove.
-      const setX = gsap.quickSetter(el, 'x', 'px');
-      const setY = gsap.quickSetter(el, 'y', 'px');
+      // quickTo : setters LISSÉS (ils tweenent vers la cible au lieu de la poser instantanément).
+      // duration 0.5 + power3.out → le lien suit le curseur avec un léger retard doux,
+      // cohérent avec le damping du curseur custom et le scrub Lenis du reste de la page.
+      const xTo = gsap.quickTo(el, 'x', { duration: 0.5, ease: 'power3' });
+      const yTo = gsap.quickTo(el, 'y', { duration: 0.5, ease: 'power3' });
 
-      // Au mousemove dans la zone du lien, on déplace l'élément vers le curseur.
+      // Au mousemove dans la zone du lien, on retargette le tween vers la position du curseur.
       const onMove = (e: MouseEvent) => {
         const rect = el.getBoundingClientRect();
         const x = (e.clientX - (rect.left + rect.width / 2)) * MAGNETIC_STRENGTH;
         const y = (e.clientY - (rect.top + rect.height / 2)) * MAGNETIC_STRENGTH;
-        setX(x);
-        setY(y);
+        xTo(x);
+        yTo(y);
       };
 
-      // Au mouseleave on revient à la position initiale avec easing.
+      // Au mouseleave on revient à 0 avec le même easing doux (plus de rebond élastique).
       const onLeave = () => {
-        gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
+        xTo(0);
+        yTo(0);
       };
 
       el.addEventListener('mousemove', onMove);
